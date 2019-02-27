@@ -1,0 +1,159 @@
+<!-- navbar -->
+<header>
+  <div class="row nav-bar">
+    <div class="col-md-8">
+
+      <div class="row">
+        <div class="col-md-9">
+
+          <img class="jealogo" src="assets/logo.png" style="float: left;margin: 10px 15px 15px 15px;" />
+          <h2 style="color: white;margin-top: 2%">EnergyChain - Jea Digital Info Systems</h2>
+
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+      aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <a class="nav-link cursor" (click)="goToResidentHistory()">Resident History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link cursor" (click)="goToBuyCoin()">Get coin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link cursor" (click)="goToBuyCash()">Get cash</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <!-- <li class="nav-item">
+                    <a class="nav-link" href="#"><img class="user " src="assets/user.png" />&nbsp;{{values.FirstName}} {{values.LastName}} </a>
+                </li> -->
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</nav>
+
+
+<div class="row">
+  <div class="col-md-2">
+
+    <img class="back-button" (click)="residenthome()" src="assets/backbutton.ico" />
+  </div>
+  <div class="col-md-8 form-div" style="margin-top:5%">
+   
+    <form>
+        <h1>Profile</h1>
+        <div class="row">
+            <div class="col-md-6"> 
+          
+          
+              <table style="text-align: left;">
+                <tr>
+                  <td style="font-size:60px;"><i class="fas fa-user"></i></td>
+                  <td><b>{{this.firstname}}</b> </td>    
+                 
+                </tr>
+                <tr>
+                  <td> Address </td>
+                  <td>: {{values.LastName}} </td>
+                  <td></td>
+          
+                </tr>  <br/>
+                <tr>
+                  <td>Available Energy Coins</td>
+                  <td> : {{values.COIN.CoinBalance}} </td>
+          
+                </tr>  <br/>
+                <tr>
+                  <td> Energy Balance </td>
+                  <td>: {{values.ENERGY.EnergyValue}} kW </td>
+          
+                </tr>  <br/>
+                <tr>
+                  <td> Total Energy bought</td>
+                  <td>: {{monthBuy}} kW </td>
+          
+                </tr>  <br/>
+                
+              </table>
+          
+          
+            </div>
+            <div class="col-md-6">
+          
+          <table style="text-align: left;">
+            <tr>
+              <td><button type="button" class="btn btn-secondary" (click)="goToSellEnergy()">Sell Energy</button></td>
+             <td><button type="button" class="btn btn-secondary" (click)=" goToBuyEnergy()" >Buy Energy</button></td> 
+            </tr>
+
+           <tr> 
+             <td>Rating   </td> <td>: 4.6 / 5.0</td>
+           </tr> <br>
+           <tr> 
+              <td>Selling Price   </td> <td>: 0.6 $/kWh</td>
+            </tr> <br>
+           <tr>
+             <td>Total Power supplied to Grid   </td> <td>: 7,500 kW</td>
+           </tr> <br>
+          <tr>
+             <td>Total Power Sold   </td> <td>: 1,500 kW</td>
+          </tr> <br>
+            <tr>
+                  <td> Total Energy sell </td>
+                  <td>: {{monthSell}} kW </td>
+          
+                </tr>
+                
+          </table>
+          
+            </div>
+            </div>
+      
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Consumption Status</th>
+            <th scope="col">Payment status</th>
+            <th scope="col">Power demand</th>
+            <th scope="col">Start Date & Time </th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Active</th>
+            <td>Active</td>
+            <td>500kW</td>
+            <td>20/02/2019</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </form>
+
+  </div>
+  <div class="col-md-2">
+
+  </div>
+
+</div>
+
+
+

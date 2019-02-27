@@ -1,0 +1,58 @@
+<header>
+  <div class="row nav-bar">
+      <div class="col-md-8">
+
+          <div class="row">
+              <div class="col-md-9">
+                  
+                      <img class="jealogo" src="assets/logo.png" style="float: left;margin: 10px 15px 15px 15px;" />
+                      <h2 style="color: white;margin-top: 2%">EnergyChain - Jea Digital Info Systems</h2>
+                  
+              </div>
+              <div class="col-md-6"></div>
+          </div>
+      </div>
+  </div>
+</header>
+
+
+<div class="row">
+  <div class="col-md-4">
+    <img class="back-button" (click)="  home() " src="assets/backbutton.ico" />
+  </div>
+
+  <div class="col-md-4 form-div form_margin" style="margin-top: 12%">
+
+    <form [formGroup]="loginform">
+
+      <h2>Login Here</h2> <br />
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
+          formControlName="email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div *ngIf="loginform.controls['email'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!loginform.controls['email'].errors.required">Email is required.</div>
+        <div [hidden]="!loginform.controls['email'].errors.email">Enter a valid email</div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password">
+      </div>
+      <div *ngIf="loginform.controls['password'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!loginform.controls['password'].errors.required">Password is required.</div>
+      </div>
+
+      <br />
+      <button type="submit" class="btn btn-primary" (click)="login()">Sign In</button> &nbsp;
+      <!-- <button type="submit" class="btn btn-primary" (click)="goTOCompanyResister()">Sign Up</button>-->
+      <br />
+      <br />
+    </form>
+
+  </div>
+  <div class="col-md-4"></div>
+
+
+</div>

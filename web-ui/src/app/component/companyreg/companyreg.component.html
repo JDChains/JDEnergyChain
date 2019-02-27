@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="col-md-4"></div>
+
+  <div class="col-md-4 form-div form_margin">
+
+    <form [formGroup]="residentreg">
+      <h2>Register Here</h2> <br />
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email Id</label>
+        <input type="email" class="form-control" id="exampleInputid" aria-describedby="emailHelp" placeholder="id"
+          formControlName="email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+
+      <div *ngIf="residentreg.controls['email'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!residentreg.controls['email'].errors.required">Email is required.</div>
+        <div [hidden]="!residentreg.controls['email'].errors.email">Enter a valid email</div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Company Name</label>
+        <input type="text" class="form-control" id="exampleInputname" placeholder="Company Name" formControlName="name">
+      </div>
+      <div *ngIf="residentreg.controls['name'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!residentreg.controls['name'].errors.required">Name is required.</div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Energy Value</label>
+        <input type="text" class="form-control" id="exampleInputenergy" placeholder=" Energy Value" formControlName="energy">
+      </div>
+
+      <div *ngIf="residentreg.controls['energy'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!residentreg.controls['energy'].errors.required">Energy is required.</div>
+        <div [hidden]="!residentreg.controls['energy'].errors.pattern">Energy value should be an integer.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Coin Balance</label>
+        <input type="text" class="form-control" id="exampleInputCoin" placeholder="coin" formControlName="coin">
+      </div>
+
+      <div *ngIf="residentreg.controls['coin'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!residentreg.controls['coin'].errors.required">Coin is required.</div>
+        <div [hidden]="!residentreg.controls['coin'].errors.pattern">Coin should be an integer.</div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Cash Value</label>
+        <input type="text" class="form-control" id="exampleInputCash" placeholder="Cash" formControlName="cash">
+      </div>
+
+      <div *ngIf="residentreg.controls['cash'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!residentreg.controls['cash'].errors.required">Cash Value is required.</div>
+        <div [hidden]="!residentreg.controls['cash'].errors.pattern">Cash Value should be an integer.</div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password">
+      </div>
+
+      <div *ngIf="residentreg.controls['password'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!residentreg.controls['password'].errors.required">Password required.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Confirm password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password2">
+      </div>
+
+      <div *ngIf="residentreg.controls['password2'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!residentreg.controls['password2'].errors.required">Please re-enter password</div>
+      </div>
+
+      <div *ngIf="!passwordMatch && formError" class="alert alert-danger">
+        <div [hidden]="passwordMatch">Passwords doesnt match</div>
+      </div>
+
+      <br />
+
+      <button type="submit" class="btn btn-primary" (click)="residentRegister()">Sign Up</button>
+      <br />
+      <br />
+      <div *ngIf="msg()">{{this.message}}</div>
+    </form>
+
+  </div>
+  <div class="col-md-4"></div>
+
+</div>

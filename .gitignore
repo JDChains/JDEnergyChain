@@ -63,4 +63,4 @@ typings/
 bc/node_modules/
 
 
-ui/node_modules/
+web-ui/node_modules/

@@ -1,0 +1,112 @@
+<header>
+        <div class="row nav-bar">
+            <div class="col-md-8">
+    
+                <div class="row">
+                    <div class="col-md-9 ">
+                        
+                            <img class="jealogo" src="assets/logo.png" style="float: left;margin: 10px 15px 15px 15px;" />
+                            <h2 style="color: white;margin-top: 2%">EnergyChain - Jea Digital Info Systems</h2>
+                        
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link cursor" (click)="goToProfile()">Profile</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link cursor" (click)="goToBuyCoin()">Get coin</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link cursor" (click)="goToBuyCash()">Get cash</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+              <!-- <li class="nav-item">
+                  <a class="nav-link" href="#"><img class="user " src="assets/user.png" />&nbsp;{{values.FirstName}} {{values.LastName}} </a>
+              </li> -->
+              <li class="nav-item">
+                  <a class="nav-link" (click)="logout()" href="#">Logout</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+          
+    </nav>
+
+
+
+<div class="row">
+  <div class="col-md-4"> <img class="back-button" (click)=" residenthome()" src="assets/backbutton.ico" /></div>
+  <div class="col-md-4">
+   
+  </div>
+  <div class="col-md-4">  <!-- <button (click)="logout()" class="btn btn-outline-light margin-button  logoutbttn">logout</button>--></div>
+
+</div>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10 form-div margin-table">
+
+
+      <div class="table table-striped">
+
+          <p  *ngIf="!values||values.length==0">LOADING RECORDS</p>
+          <table *ngIf="values.length>0" class="table table-hover ">
+              <thead class="header-color">
+                  <tr>
+                      <th>Sl No</th>
+                      <th>Transaction Id</th>
+                      <th>Time Stamp</th>
+                      <th>Energy (kW)</th>
+                      <th>Type </th>
+                        <th>Credit Coin</th>
+                        <th>Debit Coin</th>
+
+                      <th> </th>
+
+                  </tr>
+              </thead>
+
+              <tr *ngFor="let value of values ;let i = index ">
+                <td>{{i+1}}</td>
+                  <td>
+                      <p>{{value.TxId}}</p>
+                  </td>
+                  <td>
+                      <p>{{getDate(value.timestamp)}}</p>
+                  </td>
+                    <td>
+                        <p>{{value.value.Energy}}</p>
+                    </td>
+                    <td>
+                      <p>{{value.value.Type}}</p>
+                    </td>
+                     <td>
+                      <p>{{value.value.CoinCredit}}</p>
+                     </td>
+
+                     <td>
+                     <p>{{value.value.CoinDebit}}</p>
+                     </td>
+
+                
+
+              </tr>
+          </table>
+        
+      </div>

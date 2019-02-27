@@ -1,0 +1,175 @@
+<header>
+  <div class="row nav-bar">
+    <div class="col-md-8">
+
+      <div class="row">
+        <div class="col-md-9">
+
+          <img class="jealogo" src="assets/logo.png" style="float: left;margin: 10px 15px 15px 15px;" />
+          <h2 style="color: white;margin-top: 2%">EnergyChain - Jea Digital Info Systems</h2>
+
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+    </div>
+  </div>
+</header>
+<nav *ngIf="!sessionStatus" class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+      aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link cursor" (click)="goToProfile()">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link cursor" (click)="goToResidentHistory()">Resident History</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link cursor" (click)="goToBuyCash()">Get cash</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <!-- <li class="nav-item">
+              <a class="nav-link" href="#"><img class="user " src="assets/user.png" />&nbsp;{{values.FirstName}} {{values.LastName}} </a>
+          </li> -->
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</nav>
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-8">
+<P id="pararesidenthome" style="text-align:justify;">This is a software platform on which peers (either energy sellers or buyers) trade energy with others. Energy
+    sellers list the items, i.e. their surplus energy over half an hour, for sale. Energy buyers browse all the listed
+    items and then place orders. Each order contains the information including the time period for the energy
+    exchange,
+    the amount of energy to be exchanged, the price of the energy to be exchanged and the details about the seller and
+    buyer, e.g. the identities, the ratings of energy supply reliability, etc. Alternatively, energy sellers can also
+    browse the items listed by energy buyers, i.e. the required energy over half an hour, and then place orders.</P> 
+    </div> <br/><br/>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <!--  <img class="back-button" (click)="  home() " src="assets/backbutton.ico" /> -->
+  </div>
+
+  <div class="col-md-8 form-div table_margin" style="margin-left: -11%;">
+
+
+
+
+    <table class="table table-hover ">
+      <thead class="thead-dark">
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Price( $/ kWh)</th>
+          <th>StartDate</th>
+          <th>EndDate</th>
+          <th>Status</th>
+          <th>Rating</th>
+
+          <th>Ready to sell(kW)</th>
+        </tr>
+      </thead>
+
+      <tr *ngFor="let value of values ">
+        <td>
+          <input type="radio" name="selection" class="cursor"
+            (click)="onSelectId(value.QuoteID,value.TotalPower,value.Price)" id="">
+        </td>
+        <td>
+          <p>{{value.Name}}</p>
+        </td>
+        <td>
+          <p>{{value.Address}}</p>
+        </td>
+        <td>
+          <p>{{value.Price}}</p>
+        </td>
+
+
+        <td>
+          <p>{{value.StartDate}}</p>
+        </td>
+        <td>
+          <p>{{value.EndDate}}</p>
+        </td>
+
+        <td>
+          <p>{{value.Status}}</p>
+        </td>
+
+        <td>
+          <p>{{value.Rating}}</p>
+        </td>
+
+        <td>
+          <p>{{value.TotalPower}}</p>
+        </td>
+
+      </tr>
+
+    </table>
+
+
+    <button type="button" class="btn btn-secondary" (click)="buyEnergy()">Buy</button>
+    <div class="alert alert-primary" style="color:blue" *ngIf="successmsg()">{{this.responsemsg}}</div>
+
+
+  </div>
+
+
+
+  <div *ngIf="sessionStatus" class="col-md-2 form-div form_margin" style="margin-left: 5%;">
+
+    <form [formGroup]="loginform">
+
+      <h2>Login Here</h2> <br />
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Email" formControlName="email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div *ngIf="loginform.controls['email'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!loginform.controls['email'].errors.required">Email is required.</div>
+        <div [hidden]="!loginform.controls['email'].errors.email">Enter a valid email</div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+          formControlName="password">
+      </div>
+      <div *ngIf="loginform.controls['password'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!loginform.controls['password'].errors.required">Password is required.</div>
+      </div>
+
+      <br />
+      <button type="submit" class="btn btn-primary" (click)="login()">Sign In</button> &nbsp;
+      <button type="submit" class="btn btn-primary" (click)="goTOResidentResister()">Sign Up</button>
+      <br />
+      <br />
+    </form>
+  </div>
+
+
+
+
+
+
+
+
+</div>

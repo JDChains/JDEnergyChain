@@ -1,0 +1,93 @@
+<header>
+    <div class="row nav-bar">
+        <div class="col-md-8">
+  
+            <div class="row">
+                <div class="col-md-9">
+                    
+                        <img class="jealogo" src="assets/logo.png" style="float: left;margin: 10px 15px 15px 15px;" />
+                        <h2 style="color: white;margin-top: 2%">EnergyChain - Jea Digital Info Systems</h2>
+                    
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+    </div>
+  </header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor02">
+     
+      <ul class="navbar-nav ml-auto">
+          <!-- <li class="nav-item">
+              <a class="nav-link" href="#"><img class="user " src="assets/user.png" />&nbsp;{{values.FirstName}} {{values.LastName}} </a>
+          </li> -->
+          <li class="nav-item">
+              <a class="nav-link" (click)="logout()" href="#">Logout</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+      
+  </nav>
+  
+
+
+
+
+<div class="row">
+    <div class="col-md-2">
+  <!-- <img class="back-button" (click)="residenthome()"  src="assets/backbutton.ico" /> -->
+     </div>
+    <div class="col-md-8 form-div" style="margin-top: 4%;">
+
+<table  class="table table-hover ">
+    <thead class="thead-dark">
+        <tr>
+            <th></th>
+            <th>User ID</th>
+            <th>Cash Value</th>
+            <th>Currency</th>
+           
+           <th></th>
+
+        </tr>
+    </thead>
+
+    <tr *ngFor="let value of values ">
+        <td>
+            <input type="radio" name="selection" class="cursor" (click)="onSelectId(value.AccountID)" id="">
+         </td>
+        <td>
+            <p>{{value.UserID}}</p>
+        </td>
+        <td>
+            <p>{{value.CashValue}}</p>
+        </td>
+        <td>
+            <p>{{value.Currency}}</p>
+        </td>
+
+
+       
+      <td>
+        
+     
+        
+      </td>
+
+
+    </tr>
+        
+</table>
+
+
+<button type="button" class="btn btn-primary" (click)="onSelect()" >Transaction History</button>
+
+    </div>
+<div class="col-md-2"></div>
+</div>

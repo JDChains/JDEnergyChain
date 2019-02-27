@@ -1,0 +1,106 @@
+<header>
+  <div class="row nav-bar">
+      <div class="col-md-8">
+
+          <div class="row">
+              <div class="col-md-9">
+                  
+                      <img class="jealogo" src="assets/logo.png" style="float: left;margin: 10px 15px 15px 15px;" />
+                      <h2 style="color: white;margin-top: 2%">EnergyChain - Jea Digital Info Systems</h2>
+                  
+              </div>
+              <div class="col-md-6"></div>
+          </div>
+      </div>
+  </div>
+</header>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link cursor" (click)="goToProfile()">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link cursor" (click)="goToResidentHistory()">Resident History</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link cursor" (click)="goToBuyCoin()">Get coin</a>
+      </li>
+     
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <!-- <li class="nav-item">
+            <a class="nav-link" href="#"><img class="user " src="assets/user.png" />&nbsp;{{values.FirstName}} {{values.LastName}} </a>
+        </li> -->
+        <li class="nav-item">
+            <a class="nav-link" (click)="logout()" href="#">Logout</a>
+        </li>
+    </ul>
+  </div>
+</div>
+    
+</nav>
+
+
+
+<div class="row">
+  <div class="col-md-4">
+    <img class="back-button" (click)=" residenthome()" src="assets/backbutton.ico" />
+  </div>
+  <div class="col-md-4 form-div" style="margin-top:5%">
+
+    <form [formGroup]="residentreg">
+      <!--- <h2>Get Cash</h2> <br/>
+           
+            <div class="form-group">
+              <label for="exampleInputPassword1"> Bank Id</label>
+              <select class="form-control" formControlName="bid"   >
+                <option *ngFor="let bank of values" [value]="bank.BankID" >{{bank.BankID}}</option> 
+              </select>
+            </div> 
+                 
+            <div *ngIf="residentreg.controls['bid'].errors && formError" class="alert alert-danger">
+              <div [hidden]="!residentreg.controls['bid'].errors.required">Bid is required.</div>
+
+            </div>-->
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Enter number of coins</label>
+        <input type="text" class="form-control" id="exampleInputcash" placeholder="Coin" formControlName="cash">
+      </div>
+      <p>Conversion Rate:1.1 Coin/USD</p>
+      <br />
+
+      <div *ngIf="residentreg.controls['cash'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!residentreg.controls['cash'].errors.required">cash is required.</div>
+        <div [hidden]="!residentreg.controls['cash'].errors.pattern">cash should be an integer.</div>
+
+      </div>
+
+      <button type="submit" class="btn btn-primary" (click)="residentRegister()">Submit</button>
+      <br />
+      <br />
+      <div  style="color:blue" *ngIf="successmsg()">{{this.success}}</div>
+      <div style="color:red" *ngIf="displayerror()">{{this.errorrspn.error}}</div>
+    </form>
+
+  </div>
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-6">
+
+      </div>
+      <div class="col-md-6">
+      <!--  <button (click)="logout()" class="btn btn-outline-light  logout-bttn">logout</button> -->
+      </div>
+    </div>
+  </div>
+
+</div>

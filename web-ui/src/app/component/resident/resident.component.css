@@ -1,0 +1,27 @@
+.form-div {
+    margin-top:10%;
+    background-color: #fff;
+      border-radius: 1px;
+      box-shadow: 2px 0px 5px 2px #EEE8E6;
+  }
+.form-div input{
+    background-color: #F2F2F2;
+      height: 45px;
+      border: 0px;
+      
+  }
+
+  .nav-bar{
+    background:black;
+}
+.jealogo{
+    width:6%;
+    margin-left:10%;
+    margin-top: 2%;
+    color:white;
+}
+
+#pararesidenthome{
+margin-bottom: -10rem;
+color: white;
+}

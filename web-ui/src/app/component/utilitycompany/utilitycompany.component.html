@@ -1,0 +1,95 @@
+<header>
+  <div class="row nav-bar">
+      <div class="col-md-8">
+
+          <div class="row">
+              <div class="col-md-9">
+                  
+                      <img class="jealogo" src="assets/logo.png" style="float: left;margin: 10px 15px 15px 15px;" />
+                      <h2 style="color: white;margin-top: 2%">EnergyChain - Jea Digital Info Systems</h2>
+                  
+              </div>
+              <div class="col-md-6"></div>
+          </div>
+      </div>
+  </div>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    
+    <ul class="navbar-nav ml-auto">
+       
+        <li class="nav-item">
+            <a class="nav-link" > {{values.CompanyName}}</a>
+        </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link" href="#"><img class="user " src="assets/user.png" />&nbsp;{{values.FirstName}} {{values.LastName}} </a>
+        </li> -->
+        <li class="nav-item">
+            <a class="nav-link" (click)="logout()" href="#">Logout</a>
+        </li>
+    </ul>
+  </div>
+</div>
+    
+</nav>
+
+
+<div class="row">
+  <!---<div class="col-md-4 ">
+  
+ 
+  <button type="button" class="btn btn-secondary side-button" (click)="  goToBuyCoinUtil()">Get Coin</button> <br/> 
+  <button type="button" class="btn btn-light side-button" (click)="goToBuyCashUtil()">Get Cash</button> <br/>
+  
+  
+  
+  </div>-->
+
+  <div class="col-md-4">
+
+  <button type="button" class="btn btn-light side-button" (click)="goToutilityhistory()">Transaction History </button> <br/>
+  </div>
+  <div class="col-md-8 main">
+    
+
+    <div class="container" *ngIf="values.BANKACCOUNT">
+  
+    
+      <div class="row" style="margin-top:50px;">
+        <div class="col-md-4">
+          <div class="card-counter primary">
+            <i class="far fa-money-bill-alt"></i>
+            <span class="count-numbers">$ {{round(values.BANKACCOUNT.CashValue)}}</span>
+            <span class="count-name">Cash Value</span>
+          </div>
+        </div>
+    
+        <div class="col-md-4">
+          <div class="card-counter danger">
+            <i class="fas fa-coins"></i>
+            <span class="count-numbers">{{round(values.COIN.CoinBalance)}}</span>
+            <span class="count-name">Coin Balance</span>
+          </div>
+        </div>
+    
+        <div class="col-md-4">
+          <div class="card-counter success">
+            <i class="fas fa-bolt"></i>
+            <span class="count-numbers">{{round(values.ENERGY.EnergyValue)}} kW</span>
+            <span class="count-name">Energy Value</span>
+          </div>
+        </div>
+    
+    </div>         
+
+  </div>
+ 
+  
+</div>

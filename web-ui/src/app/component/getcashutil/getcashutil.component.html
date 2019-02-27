@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-4">
+    <img class="back-button" (click)=" residenthome()" src="assets/backbutton.ico" />
+  </div>
+  <div class="col-md-4 form-div">
+
+    <form [formGroup]="residentreg">
+      <h2>Get Cash</h2> <br />
+
+      <div class="form-group" *ngIf="values">
+        <label for="exampleInputPassword1"> Bank Id</label>
+        <select class="form-control" formControlName="bid">
+          <option *ngFor="let bank of values" [value]="bank.BankID">{{bank.BankID}}</option>
+        </select>
+      </div>
+
+      <div *ngIf="residentreg.controls['bid'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!residentreg.controls['bid'].errors.required">bid is required.</div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Cash</label>
+        <input type="text" class="form-control" id="exampleInputcash" placeholder="Cash" formControlName="cash">
+      </div>
+      <p>Conversion Rate:1.1 Coin/USD</p>
+      <br />
+
+      <div *ngIf="residentreg.controls['cash'].errors && formError" class="alert alert-danger">
+        <div [hidden]="!residentreg.controls['cash'].errors.required">cash is required.</div>
+        <div [hidden]="!residentreg.controls['cash'].errors.pattern">cash should be an integer.</div>
+
+      </div>
+
+      <button type="submit" class="btn btn-primary" (click)="residentRegister()">Sign Up</button>
+      <br />
+      <br />
+      <div style="color:red" *ngIf="displayerror()">{{this.errorrspn.error}}</div>
+    </form>
+
+  </div>
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-6">
+
+      </div>
+      <div class="col-md-6">
+        <button (click)="logout()" class="btn btn-outline-light  logout-bttn">logout</button>
+      </div>
+    </div>
+  </div>
+
+</div>
