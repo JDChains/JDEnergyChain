@@ -1,0 +1,45 @@
+# ---------------------------------------------------------------------------
+# "OrdererOrgs" - Definition of organizations managing orderer nodes
+# ---------------------------------------------------------------------------
+OrdererOrgs:
+  - Name: Orderer
+    Domain: jeabc.com
+    Specs:
+      - Hostname: orderer1
+      - Hostname: orderer2
+      - Hostname: orderer3
+# ---------------------------------------------------------------------------
+# "PeerOrgs" - Definition of organizations managing peer nodes
+# ---------------------------------------------------------------------------
+PeerOrgs:
+  - Name: Residents
+    Domain: residents.jeabc.com
+    CA:
+       Hostname: ca # implicitly ca.govt.jeabc.com
+    Template:
+      Count: 3
+      # Start: 5
+      SANS:
+        - "localhost"
+    Users:
+      Count: 1
+  - Name: Bank
+    Domain: bank.jeabc.com
+    CA:
+       Hostname: ca # implicitly ca.builer.jeabc.com
+    Template:
+      Count: 3
+      SANS:
+        - "localhost"
+    Users:
+      Count: 1
+  - Name: UtilityCompany
+    Domain: utilitycompany.jeabc.com
+    CA:
+       Hostname: ca # implicitly ca.user.jeabc.com
+    Template:
+      Count: 3
+      SANS:
+        - "localhost"
+    Users:
+      Count: 1

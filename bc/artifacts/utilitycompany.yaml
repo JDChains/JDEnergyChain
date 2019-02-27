@@ -1,0 +1,11 @@
+
+name: "jeabc-utilitycompany"
+description: "jeabc Network - client definition for UtilityCompany"
+version: "1.0"
+
+client:
+  organization: UtilityCompany
+  credentialStore:
+    path: "./key/fabric-client-kv-utilitycompany"
+    cryptoStore:
+      path: "./key/cryptoStore/utilitycompany"

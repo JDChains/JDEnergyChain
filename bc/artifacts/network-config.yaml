@@ -1,0 +1,168 @@
+---
+# --------------------------------------------------------------------------------------------
+# The network connection profile provides client applications the information about the target
+# blockchain network that are necessary for the applications to interact with it. 
+# --------------------------------------------------------------------------------------------
+
+name: "jeabc"
+description: "jeabc Network"
+version: "1.0"
+
+channels:
+  jeadigitalchannel:
+    orderers:
+      - orderer1.jeabc.com
+      - orderer2.jeabc.com
+      - orderer3.jeabc.com
+
+    peers:
+      peer0.residents.jeabc.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+
+
+      peer0.bank.jeabc.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+
+      peer0.utilitycompany.jeabc.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+
+
+    chaincodes:
+      - lending:v0
+
+organizations:
+  Residents:
+    mspid: ResidentsMSP
+    peers:
+      - peer0.residents.jeabc.com
+
+    certificateAuthorities:
+      - ca-residents
+
+    adminPrivateKey:
+      path: artifacts/channel/crypto-config/peerOrganizations/residents.jeabc.com/users/Admin@residents.jeabc.com/msp/keystore/4337fb3f2662b33b61cbe4fb1fcfde9fbc4db8b321cd3564894115dee1719930_sk
+    signedCert:
+      path: artifacts/channel/crypto-config/peerOrganizations/residents.jeabc.com/users/Admin@residents.jeabc.com/msp/signcerts/Admin@residents.jeabc.com-cert.pem
+
+  Bank:
+    mspid: BankMSP
+    peers:
+      - peer0.bank.jeabc.com
+
+    certificateAuthorities:
+      - ca-bank
+    adminPrivateKey:
+      path: artifacts/channel/crypto-config/peerOrganizations/bank.jeabc.com/users/Admin@bank.jeabc.com/msp/keystore/756554249dd5b8cfdd2377520a60fb1cf189e8679284969c94c28fc714f1d341_sk
+    signedCert:
+      path: artifacts/channel/crypto-config/peerOrganizations/bank.jeabc.com/users/Admin@bank.jeabc.com/msp/signcerts/Admin@bank.jeabc.com-cert.pem
+
+  UtilityCompany:
+    mspid: UtilityCompanyMSP
+    peers:
+      - peer0.utilitycompany.jeabc.com
+    certificateAuthorities:
+      - ca-utilitycompany
+    adminPrivateKey:
+      path: artifacts/channel/crypto-config/peerOrganizations/utilitycompany.jeabc.com/users/Admin@utilitycompany.jeabc.com/msp/keystore/a966bc447929941c1a4363e2f0c036ec00e772eca45bf7cde66364d40118a2ac_sk
+    signedCert:
+      path: artifacts/channel/crypto-config/peerOrganizations/utilitycompany.jeabc.com/users/Admin@utilitycompany.jeabc.com/msp/signcerts/Admin@utilitycompany.jeabc.com-cert.pem
+
+orderers:
+  orderer1.jeabc.com:
+    url: grpcs://localhost:15101
+    grpcOptions:
+      ssl-target-name-override: orderer1.jeabc.com
+      grpc-max-send-message-length: 15
+    tlsCACerts:
+      path: artifacts/channel/crypto-config/ordererOrganizations/jeabc.com/orderers/orderer1.jeabc.com/tls/ca.crt
+
+  orderer2.jeabc.com:
+    url: grpcs://localhost:15102
+    grpcOptions:
+      ssl-target-name-override: orderer2.jeabc.com
+      grpc-max-send-message-length: 15
+    tlsCACerts:
+      path: artifacts/channel/crypto-config/ordererOrganizations/jeabc.com/orderers/orderer2.jeabc.com/tls/ca.crt
+
+  orderer3.jeabc.com:
+    url: grpcs://localhost:15103
+    grpcOptions:
+      ssl-target-name-override: orderer3.jeabc.com
+      grpc-max-send-message-length: 15
+    tlsCACerts:
+      path: artifacts/channel/crypto-config/ordererOrganizations/jeabc.com/orderers/orderer3.jeabc.com/tls/ca.crt
+
+peers:
+  peer0.residents.jeabc.com:
+    # this URL is used to send endorsement and query requests
+    url: grpcs://localhost:15121
+    # this URL is used to connect the EventHub and registering event listeners
+    eventUrl: grpcs://localhost:15123
+    grpcOptions:
+      ssl-target-name-override: peer0.residents.jeabc.com
+    tlsCACerts:
+      path: artifacts/channel/crypto-config/peerOrganizations/residents.jeabc.com/peers/peer0.residents.jeabc.com/tls/ca.crt
+
+
+  peer0.bank.jeabc.com:
+    url: grpcs://localhost:15133
+    eventUrl: grpcs://localhost:15135
+    grpcOptions:
+      ssl-target-name-override: peer0.bank.jeabc.com
+    tlsCACerts:
+      path: artifacts/channel/crypto-config/peerOrganizations/bank.jeabc.com/peers/peer0.bank.jeabc.com/tls/ca.crt
+
+
+  peer0.utilitycompany.jeabc.com:
+    url: grpcs://localhost:15145
+    eventUrl: grpcs://localhost:15147
+    grpcOptions:
+      ssl-target-name-override: peer0.utilitycompany.jeabc.com
+    tlsCACerts:
+      path: artifacts/channel/crypto-config/peerOrganizations/utilitycompany.jeabc.com/peers/peer0.utilitycompany.jeabc.com/tls/ca.crt
+
+certificateAuthorities:
+  ca-residents:
+    url: https://localhost:15111
+    httpOptions:
+      verify: false
+    tlsCACerts:
+      path: artifacts/channel/crypto-config/peerOrganizations/residents.jeabc.com/ca/ca.residents.jeabc.com-cert.pem
+    registrar:
+      - enrollId: admin
+        enrollSecret: adminpw
+    # [Optional] The optional name of the CA.
+    caName: ca-residents
+
+  ca-bank:
+    url: https://localhost:15112
+    httpOptions:
+      verify: false
+    tlsCACerts:
+      path: artifacts/channel/crypto-config/peerOrganizations/bank.jeabc.com/ca/ca.bank.jeabc.com-cert.pem
+    registrar:
+      - enrollId: admin
+        enrollSecret: adminpw
+    # [Optional] The optional name of the CA.
+    caName: ca-bank
+
+  ca-utilitycompany:
+    url: https://localhost:15113
+    httpOptions:
+      verify: false
+    tlsCACerts:
+      path: artifacts/channel/crypto-config/peerOrganizations/utilitycompany.jeabc.com/ca/ca.utilitycompany.jeabc.com-cert.pem
+    registrar:
+      - enrollId: admin
+        enrollSecret: adminpw
+    # [Optional] The optional name of the CA.
+    caName: ca-utilitycompany

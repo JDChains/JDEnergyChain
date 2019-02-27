@@ -1,0 +1,10 @@
+name: "jeabc-residents"
+description: "jeabc Network - client definition for Residents"
+version: "1.0"
+
+client:
+  organization: Residents
+  credentialStore:
+    path: "./key/fabric-client-kv-residents"
+    cryptoStore:
+      path: "./key/cryptoStore/residents"

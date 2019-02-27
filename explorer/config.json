@@ -1,0 +1,58 @@
+{
+	"network-config": {
+		"org1": {
+			"name": "peerOrg1",
+			"mspid": "ResidentsMSP",
+			"peer1": {
+				"requests": "grpcs://127.0.0.1:15121",
+				"events": "grpcs://127.0.0.1:15123",
+				"server-hostname": "peer0.residents.jeabc.com",
+				"tls_cacerts": "../bc/artifacts/channel/crypto-config/peerOrganizations/residents.jeabc.com/peers/peer0.residents.jeabc.com/tls/ca.crt"
+			},
+			"admin": {
+				"key": "../bc/artifacts/channel/crypto-config/peerOrganizations/residents.jeabc.com/users/Admin@residents.jeabc.com/msp/keystore",
+				"cert": "../bc/artifacts/channel/crypto-config/peerOrganizations/residents.jeabc.com/users/Admin@residents.jeabc.com/msp/signcerts"
+			}
+		},
+		"org2": {
+			"name": "peerOrg2",
+			"mspid": "BankMSP",
+			"peer1": {
+				"requests": "grpcs://127.0.0.1:15133",
+				"events": "grpcs://127.0.0.1:15135",
+				"server-hostname": "peer0.bank.jeabc.com",
+				"tls_cacerts": "../bc/artifacts/channel/crypto-config/peerOrganizations/bank.jeabc.com/peers/peer0.bank.jeabc.com/tls/ca.crt"
+			},
+			"admin": {
+				"key": "../bc/artifacts/channel/crypto-config/peerOrganizations/bank.jeabc.com/users/Admin@bank.jeabc.com/msp/keystore",
+				"cert": "../bc/artifacts/channel/crypto-config/peerOrganizations/bank.jeabc.com/users/Admin@bank.jeabc.com/msp/signcerts"
+			}
+		},
+		"org3": {
+			"name": "peerOrg3",
+			"mspid": "UtilityCompanyMSP",
+			"peer1": {
+				"requests": "grpcs://127.0.0.1:15145",
+				"events": "grpcs://127.0.0.1:15147",
+				"server-hostname": "peer0.utilitycompany.jeabc.com",
+				"tls_cacerts": "../bc/artifacts/channel/crypto-config/peerOrganizations/utilitycompany.jeabc.com/peers/peer0.utilitycompany.jeabc.com/tls/ca.crt"
+			},
+			"admin": {
+				"key": "../bc/artifacts/channel/crypto-config/peerOrganizations/utilitycompany.jeabc.com/users/Admin@utilitycompany.jeabc.com/msp/keystore",
+				"cert": "../bc/artifacts/channel/crypto-config/peerOrganizations/utilitycompany.jeabc.com/users/Admin@utilitycompany.jeabc.com/msp/signcerts"
+			}
+		}
+	},
+	"host": "localhost",
+	"port": "4050",
+	"channel": "jeadigitalchannel",
+	"keyValueStore": "/tmp/fabric-client-kv-org1",
+	"eventWaitTime": "60000",
+	"mysql": {
+		"host": "127.0.0.1",
+		"port": "3306",
+		"database": "fabricexplorer",
+		"username": "root",
+		"passwd": "root"
+	}
+}

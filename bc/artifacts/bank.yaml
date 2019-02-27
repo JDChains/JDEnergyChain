@@ -1,0 +1,11 @@
+
+name: "jeabc-bank"
+description: "jeabc Network - client definition for Bank"
+version: "1.0"
+
+client:
+  organization: Bank
+  credentialStore:
+    path: "./key/fabric-client-kv-bank"
+    cryptoStore:
+      path: "./key/cryptoStore/bank"

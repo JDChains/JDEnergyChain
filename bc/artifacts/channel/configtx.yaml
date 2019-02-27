@@ -1,0 +1,123 @@
+#--------------------------------------------------------------------------------------------
+# Configuration for Generate genesis block, channel.tx and anchor peer using configtxgen tool
+#--------------------------------------------------------------------------------------------
+---
+#-------------------------------------------------------------------------------
+#   Capabilities
+#-------------------------------------------------------------------------------
+Capabilities:
+    Global: &ChannelCapabilities
+        V1_1: true
+
+    Orderer: &OrdererCapabilities
+        V1_1: true
+
+    Application: &ApplicationCapabilities
+        V1_2: true
+#-------------------------------------------------------------------------------
+#   Section: Organizations
+#-------------------------------------------------------------------------------
+Organizations:
+
+    - &OrdererOrg
+        Name: OrdererMSP
+        # ID to load the MSP definition as
+        ID: OrdererMSP
+        AdminPrincipal: Role.ADMIN
+        # MSPDir is the filesystem path which contains the MSP configuration
+        MSPDir: crypto-config/ordererOrganizations/jeabc.com/msp
+
+    - &Residents
+        Name: ResidentsMSP
+        ID: ResidentsMSP
+        MSPDir: crypto-config/peerOrganizations/residents.jeabc.com/msp
+        AdminPrincipal: Role.ADMIN
+        AnchorPeers:
+            - Host: peer0.residents.jeabc.com
+              Port: 7051
+
+    - &Bank
+        Name: BankMSP
+        ID: BankMSP
+        MSPDir: crypto-config/peerOrganizations/bank.jeabc.com/msp
+        AdminPrincipal: Role.ADMIN
+        AnchorPeers:
+            - Host: peer0.bank.jeabc.com
+              Port: 7051
+
+    - &UtilityCompany
+        Name: UtilityCompanyMSP
+        ID: UtilityCompanyMSP
+        MSPDir: crypto-config/peerOrganizations/utilitycompany.jeabc.com/msp
+        AdminPrincipal: Role.ADMIN
+        AnchorPeers:
+            - Host: peer0.utilitycompany.jeabc.com
+              Port: 7051
+#-------------------------------------------------------------------------------
+#   Orderer
+#-------------------------------------------------------------------------------
+Orderer: &OrdererDefaults
+
+    OrdererType: kafka
+
+    Addresses:
+        - orderer1.jeabc.com:7050
+        - orderer2.jeabc.com:7050
+        - orderer3.jeabc.com:7050
+    BatchTimeout: 300ms
+    BatchSize:
+        MaxMessageCount: 10
+        AbsoluteMaxBytes: 102760448
+        PreferredMaxBytes: 524288
+    Kafka:
+        # Brokers: A list of Kafka brokers to which the orderer connects
+        # NOTE: Use IP:port notation
+        Brokers:
+            - kafka0:9092
+            - kafka1:9092
+            - kafka2:9092
+            - kafka3:9092
+
+    # Organizations is the list of orgs which are defined as participants on
+    # the orderer side of the network
+
+    Organizations:
+
+#-------------------------------------------------------------------------------
+#   Application
+#-------------------------------------------------------------------------------
+Application: &ApplicationDefaults
+
+    # Organizations is the list of orgs which are defined as participants on
+    # the application side of the network
+    Organizations:
+
+#-------------------------------------------------------------------------------
+#   Profile
+#-------------------------------------------------------------------------------
+Profiles:
+
+    ThreeOrgsOrdererGenesis:
+        Orderer:
+            <<: *OrdererDefaults
+            OrdererType: kafka
+            Addresses:
+                - orderer1.jeabc.com:7050
+                - orderer2.jeabc.com:7050
+                - orderer3.jeabc.com:7050
+            Organizations:
+                - *OrdererOrg
+        Consortiums:
+            JeadigitalConsortium:
+                Organizations:
+                    - *Residents
+                    - *Bank
+                    - *UtilityCompany
+    ThreeOrgsChannel:
+        Consortium: JeadigitalConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Residents
+                - *Bank
+                - *UtilityCompany
